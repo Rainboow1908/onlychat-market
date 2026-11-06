@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "name": "OnlyChat Official Market",
+  "updatedAt": "2026-11-06T20:14:23Z",
+  "plugins": [
+    {
+      "id": "hello",
+      "version": "0.1.0",
+      "api": 1,
+      "minAppVersion": null,
+      "downloadUrl": "https://onlychat-market.pages.dev/packages/hello-0.1.0.ocp",
+      "sha256": "05e79ae75e7d3d5a5dfbe460bc20ff2f2bce37b49e45980f9c1b611a68e1373b",
+      "signature": "jPczsFgMZtmOgQduEl1XMEgvoe+OvglAQNDawv5/co7I+ES7vHnMUbaH1McnElYvvgFxKzGqJtxNwL0Mp9t+AA==",
+      "keyId": "6ca4f6d452839f91",
+      "publisher": "onlychat",
+      "permissions": [],
+      "displayName": "Hello",
+      "description": "ABI 验证插件：初始化、tick、事件与状态快照。",
+      "homepage": null,
+      "iconUrl": null
+    },
+    {
+      "id": "minimap",
+      "version": "0.5.0",
+      "api": 1,
+      "minAppVersion": null,
+      "downloadUrl": "https://onlychat-market.pages.dev/packages/minimap-0.5.0.ocp",
+      "sha256": "d75b6f02e0d54a2a079e74db0a0cdfc63cd7630efa5ae312fc2e34d644ad33b5",
+      "signature": "VFhnczMJUk+XVV9Q9eaodxecr0MevtfQtVlhYIfXqRebVIRQN7XnMr7XkzIv2u2c/NIcQMSHQU7fMHAjbab3Bg==",
+      "keyId": "6ca4f6d452839f91",
+      "publisher": "onlychat",
+      "permissions": [
+        "assets",
+        "entities.read",
+        "players.read",
+        "ui.declarative",
+        "world.read"
+      ],
+      "displayName": "小地图",
+      "description": "Rust/wasm 小地图：显示玩家当前 Y 层方块、玩家位置和附近实体。",
+      "homepage": null,
+      "iconUrl": null
+    },
+    {
+      "id": "official-chat",
+      "version": "1.1.0",
+      "api": 1,
+      "minAppVersion": null,
+      "downloadUrl": "https://onlychat-market.pages.dev/packages/official-chat-1.1.0.ocp",
+      "sha256": "1b54f73131fcc83af3ed6398830a0d9efa659f0d3a256eeaeb19a1ac5dcc3584",
+      "signature": "AdK2uWcM3kDK7hSCqPpw4ebMC8dNVprrgAb9Hq8Lf4ZqaIcSWLHnHdJ3QoP9FydBFYTJX6sm9G9Ii07ErdYfAw==",
+      "keyId": "6ca4f6d452839f91",
+      "publisher": "onlychat",
+      "permissions": [
+        "chat.receive",
+        "fs.plugin"
+      ],
+      "displayName": "永久聊天记录",
+      "description": "按服务器把玩家聊天、系统消息和指令回显永久保存为本地 JSONL 日志。",
+      "homepage": null,
+      "iconUrl": null
+    }
+  ]
+}

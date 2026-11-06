@@ -1,0 +1,18 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+node_modules/
+
+# Wrangler local state (never deploy or commit)
+.wrangler/
+.wrangler.toml
+
+# Private material: seeds, keys, local environment
+*.seed
+*.key
+secrets/
+private/
+.env
+.env.*
