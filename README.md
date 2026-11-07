@@ -20,6 +20,8 @@ public/
   packages/
     <id>-<version>.ocp           deterministic ZIP package
     <id>-<version>.ocp.sig       detached Ed25519 signature (JSON)
+    <id>-<version>.md            README.md copied out of the package (optional)
+    <id>-<version>.svg|png|webp  icon copied out of the package (optional)
 .github/
   workflows/deploy.yml           GitHub Actions -> Cloudflare Pages
   scripts/verify-signatures.mjs  CI verification / emergency re-signing
@@ -46,6 +48,8 @@ cargo build -p onlychat-plugin-market --bin onlychat-market
 $stage = "..\.tmp\market-stage\hello"
 New-Item -ItemType Directory -Force $stage | Out-Null
 Copy-Item plugins\hello\plugin.toml,plugins\hello\plugin.wasm $stage\
+#    Optional but recommended: the market README and icon.
+Copy-Item plugins\hello\README.md,plugins\hello\icon.svg $stage\
 
 # 3. Pack + sign into public/packages (writes hello-0.1.0.ocp and .ocp.sig)
 cargo run -p onlychat-plugin-market --bin onlychat-market -- pack $stage `
@@ -57,7 +61,10 @@ cargo run -p onlychat-plugin-market --bin onlychat-market -- verify `
   ..\.tmp\onlychat-market\public\packages\hello-0.1.0.ocp `
   --key m94ftwIyfp5vu6ZkASUzE2EvfCQ373hDl9PdSKTj82k=
 
-# 5. Regenerate the index (verifies every package with the official key)
+# 5. Regenerate the index (verifies every package with the official key).
+#    This also extracts README.md / icon.* from each package into
+#    public/packages/<id>-<version>.md / .<svg|png|webp> and sets
+#    readmeUrl / iconUrl to those files.
 cargo run -p onlychat-plugin-market --bin onlychat-market -- index `
   ..\.tmp\onlychat-market\public\packages `
   --base-url https://market.onlychat.rbowo.com/packages `
@@ -83,9 +90,9 @@ a new publisher pair.
 
 Pack the directory that contains only `plugin.toml` and the wasm entry (plus
 optional `ui/` and `assets/`). `plugin.json`, `logs/`, `resources/`,
-`plugin-data/`, `Cargo.toml` and `src/` are always rejected; only
-`README(.md)`, `LICENSE(.md)` and `CHANGELOG.md` are accepted as extra root
-files.
+`plugin-data/`, `Cargo.toml` and `src/` are always rejected; `README(.md)`,
+`LICENSE(.md)`, `CHANGELOG.md` and `icon.svg` / `icon.png` / `icon.webp` are
+accepted as extra root files.
 
 ## Index format
 
@@ -109,7 +116,8 @@ files.
       "displayName": "Hello",
       "description": "...",
       "homepage": null,
-      "iconUrl": null
+      "readmeUrl": "https://market.onlychat.rbowo.com/packages/hello-0.1.0.md",
+      "iconUrl": "https://market.onlychat.rbowo.com/packages/hello-0.1.0.svg"
     }
   ]
 }
@@ -118,6 +126,32 @@ files.
 The index may list multiple versions of one id; the daemon picks the newest
 compatible one for install and treats older ones as downgrades (explicit
 consent required). `minAppVersion` is enforced before a package is downloaded.
+
+`readmeUrl` and `iconUrl` are optional. When present they must be absolute
+`http(s)` URLs; the daemon rejects anything else at index validation time.
+They are presentation-only: the daemon never fetches them.
+
+### README and icon conventions
+
+Both files are read from the verified `.ocp`; there is no per-plugin logic.
+
+| Inside the package | Sidecar next to the `.ocp` | Index field |
+| --- | --- | --- |
+| `README.md` | `<id>-<version>.md` | `<base-url>/<id>-<version>.md` |
+| root `icon.svg` / `icon.png` / `icon.webp` | `<id>-<version>.<ext>` | `<base-url>/<id>-<version>.<ext>` |
+| `plugin.toml` `icon = "assets/icon.png"` | `<id>-<version>.png` | `<base-url>/<id>-<version>.png` |
+
+* Root icon preference is `svg` → `png` → `webp`; `manifest.icon` wins over the
+  root convention. Only `icon.<ext>` or `assets/<name>.<ext>` with `svg`, `png`
+  or `webp` is accepted, and the declared file must be inside the package.
+* Icons should be 64×64 with a transparent background (SVG recommended).
+* A package without README or icon is still publishable: the fields are omitted
+  (`null` for consumers) and the UI falls back to the manifest description and a
+  letter avatar.
+* `onlychat-market index` overwrites the sidecars on every run, so a re-release
+  never keeps a stale README or icon for the same version.
+* The web UI fetches `readmeUrl` on demand. Markdown is rendered by escaping raw
+  HTML and allowing only `http(s)` links (`target="_blank"`, `rel="noreferrer"`).
 
 ## Key management
 

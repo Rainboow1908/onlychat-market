@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "OnlyChat Official Market",
-  "updatedAt": "2026-11-07T05:21:15Z",
+  "updatedAt": "2026-11-07T05:58:20Z",
   "plugins": [
     {
       "id": "ai-chat",
@@ -9,8 +9,8 @@
       "api": 1,
       "minAppVersion": null,
       "downloadUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.1.0.ocp",
-      "sha256": "a9777079d00fa21ce32f869020a085293d44132ff2fe79752439c25e6930ca32",
-      "signature": "XAZMvQI2yPtlUpuD48N6AWpq89ZjEwFlkLmliBGOuqSrFuKAd/Z//m7G3IIDUgUALcrjVwlwg7lVhRLu9lFuBw==",
+      "sha256": "8eeee205dfd1bf6db6cfced60ff5ec8d0c8745a66a6d4a93f1f261a2e4beeda7",
+      "signature": "fzYKUqLK9XSfbFDjnigJFnbBrOgfuoEQQAiTidiJGPG1xPyCfkXQHVFVLLHOXaTkX7K809taf23cQ3Ylv0tGDQ==",
       "keyId": "6ca4f6d452839f91",
       "publisher": "onlychat",
       "permissions": [
@@ -21,7 +21,8 @@
       "displayName": "AI 聊天助手",
       "description": "接入 OpenAI / Anthropic / Gemini 的聊天机器人，带按服务器隔离的本地记忆（长期画像、对话摘要与关键词检索）。",
       "homepage": null,
-      "iconUrl": null
+      "readmeUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.1.0.md",
+      "iconUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.1.0.svg"
     },
     {
       "id": "hello",
@@ -29,15 +30,16 @@
       "api": 1,
       "minAppVersion": null,
       "downloadUrl": "https://market.onlychat.rbowo.com/packages/hello-0.1.0.ocp",
-      "sha256": "05e79ae75e7d3d5a5dfbe460bc20ff2f2bce37b49e45980f9c1b611a68e1373b",
-      "signature": "jPczsFgMZtmOgQduEl1XMEgvoe+OvglAQNDawv5/co7I+ES7vHnMUbaH1McnElYvvgFxKzGqJtxNwL0Mp9t+AA==",
+      "sha256": "b15a3a74bfc639d69f6b8028b4a7928315290b581e0e5b311a840c236b8970dc",
+      "signature": "uFYHEBurtBOAdKjGrM1WerMbtM6reU0xzTtvQSBdPggFo22Q6O/fIclfZj5klT7CRh+yC5AgsD922PJvkMQMCw==",
       "keyId": "6ca4f6d452839f91",
       "publisher": "onlychat",
       "permissions": [],
       "displayName": "Hello",
       "description": "ABI 验证插件：初始化、tick、事件与状态快照。",
       "homepage": null,
-      "iconUrl": null
+      "readmeUrl": "https://market.onlychat.rbowo.com/packages/hello-0.1.0.md",
+      "iconUrl": "https://market.onlychat.rbowo.com/packages/hello-0.1.0.svg"
     },
     {
       "id": "minimap",
@@ -45,8 +47,8 @@
       "api": 1,
       "minAppVersion": null,
       "downloadUrl": "https://market.onlychat.rbowo.com/packages/minimap-0.5.0.ocp",
-      "sha256": "d75b6f02e0d54a2a079e74db0a0cdfc63cd7630efa5ae312fc2e34d644ad33b5",
-      "signature": "VFhnczMJUk+XVV9Q9eaodxecr0MevtfQtVlhYIfXqRebVIRQN7XnMr7XkzIv2u2c/NIcQMSHQU7fMHAjbab3Bg==",
+      "sha256": "f1ebecc99677f82486f17d22fa5f711111c381b8a71c345814854edbd1f6d164",
+      "signature": "rPxdf7QtXL1NGm0PnmleRg+Rdh+q+2+E7KO/iFHXaiBaYQHImeofOBOIF9WEIkOesKe45jaLaE3k6dMaUIGQBg==",
       "keyId": "6ca4f6d452839f91",
       "publisher": "onlychat",
       "permissions": [
@@ -59,7 +61,8 @@
       "displayName": "小地图",
       "description": "Rust/wasm 小地图：显示玩家当前 Y 层方块、玩家位置和附近实体。",
       "homepage": null,
-      "iconUrl": null
+      "readmeUrl": "https://market.onlychat.rbowo.com/packages/minimap-0.5.0.md",
+      "iconUrl": "https://market.onlychat.rbowo.com/packages/minimap-0.5.0.svg"
     },
     {
       "id": "official-chat",
@@ -67,8 +70,8 @@
       "api": 1,
       "minAppVersion": null,
       "downloadUrl": "https://market.onlychat.rbowo.com/packages/official-chat-1.1.0.ocp",
-      "sha256": "1b54f73131fcc83af3ed6398830a0d9efa659f0d3a256eeaeb19a1ac5dcc3584",
-      "signature": "AdK2uWcM3kDK7hSCqPpw4ebMC8dNVprrgAb9Hq8Lf4ZqaIcSWLHnHdJ3QoP9FydBFYTJX6sm9G9Ii07ErdYfAw==",
+      "sha256": "3b78e42c5cb6e13fe5cb11e20259adaed31b23f8e6ce8fca08229ba2ae5d2a45",
+      "signature": "pwcpMJfN4TrMJK41YW3Nz9Dl2cc0iZ1NvXPJKHcFfIqa+o8QoU+zyOF7RzeNlR15owGJ7r56QND+3N0YusIaDw==",
       "keyId": "6ca4f6d452839f91",
       "publisher": "onlychat",
       "permissions": [
@@ -78,7 +81,8 @@
       "displayName": "永久聊天记录",
       "description": "按服务器把玩家聊天、系统消息和指令回显永久保存为本地 JSONL 日志。",
       "homepage": null,
-      "iconUrl": null
+      "readmeUrl": "https://market.onlychat.rbowo.com/packages/official-chat-1.1.0.md",
+      "iconUrl": "https://market.onlychat.rbowo.com/packages/official-chat-1.1.0.svg"
     }
   ]
 }
