@@ -117,7 +117,8 @@ accepted as extra root files.
       "description": "...",
       "homepage": null,
       "readmeUrl": "https://market.onlychat.rbowo.com/packages/hello-0.1.0.md",
-      "iconUrl": "https://market.onlychat.rbowo.com/packages/hello-0.1.0.svg"
+      "iconUrl": "https://market.onlychat.rbowo.com/packages/hello-0.1.0.svg",
+      "creator": { "name": "Rainboow1908", "url": "https://github.com/Rainboow1908" }
     }
   ]
 }
@@ -152,6 +153,18 @@ Both files are read from the verified `.ocp`; there is no per-plugin logic.
   never keeps a stale README or icon for the same version.
 * The web UI fetches `readmeUrl` on demand. Markdown is rendered by escaping raw
   HTML and allowing only `http(s)` links (`target="_blank"`, `rel="noreferrer"`).
+* `creator` is optional and derived from the package manifest `[author]` table:
+
+```toml
+[author]
+name = "Rainboow1908"
+url = "https://github.com/Rainboow1908"
+```
+
+  `name` is required, `url` is optional and must be absolute `http(s)`. The CLI
+  reads it for every package, so publishing a new plugin never needs a per-plugin
+  `--creator` flag. Entries without `creator` remain valid; the UI falls back to
+  the `publisher`.
 
 ## Key management
 
