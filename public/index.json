@@ -1,8 +1,34 @@
 {
   "schemaVersion": 1,
   "name": "OnlyChat Official Market",
-  "updatedAt": "2026-11-07T06:55:40Z",
+  "updatedAt": "2026-11-07T10:37:41Z",
   "plugins": [
+    {
+      "id": "ai-chat",
+      "version": "0.2.0",
+      "api": 1,
+      "minAppVersion": null,
+      "downloadUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.2.0.ocp",
+      "sha256": "0e793c0e35d5fc1ebe570bceb24ebd1cb33fe01d54646b7a920cfa4107bbe2a8",
+      "signature": "J9LLZ5+g1Yf34rNsS1UqnsocQX+RZEk7vNBqCg5LPTIZ2CQPE55YJVhjOm8e/Mwupv43tAJpr5s/j3b5MT6rCw==",
+      "keyId": "6ca4f6d452839f91",
+      "publisher": "onlychat",
+      "permissions": [
+        "chat.receive",
+        "chat.send",
+        "net",
+        "ui.declarative"
+      ],
+      "displayName": "AI 聊天助手",
+      "description": "接入 OpenAI / Anthropic / Gemini 的聊天 agent：JSON 工具调用、全量归档 grep、上下文压缩和右侧思考面板。",
+      "homepage": null,
+      "readmeUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.2.0.md",
+      "iconUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.2.0.svg",
+      "creator": {
+        "name": "Rainboow1908",
+        "url": "https://github.com/Rainboow1908"
+      }
+    },
     {
       "id": "ai-chat",
       "version": "0.1.0",
