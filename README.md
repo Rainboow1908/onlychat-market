@@ -2,8 +2,9 @@
 
 Official static plugin market for OnlyChat Next.
 
-* Index: <https://onlychat-market.pages.dev/index.json>
-* Packages: <https://onlychat-market.pages.dev/packages/>
+* Index: <https://market.onlychat.rbowo.com/index.json>
+* Packages: <https://market.onlychat.rbowo.com/packages/>
+* Pages default domain: <https://onlychat-market.pages.dev> (still serves the same content as a fallback)
 * Publisher key id: `6ca4f6d452839f91`
 * Publisher public key (base64): `m94ftwIyfp5vu6ZkASUzE2EvfCQ373hDl9PdSKTj82k=`
 * Publisher public key (hex): `9bde1fb702327e9e6fbba66401253313612f7c2437ef784397d3dd48a4e3f369`
@@ -59,7 +60,7 @@ cargo run -p onlychat-plugin-market --bin onlychat-market -- verify `
 # 5. Regenerate the index (verifies every package with the official key)
 cargo run -p onlychat-plugin-market --bin onlychat-market -- index `
   ..\.tmp\onlychat-market\public\packages `
-  --base-url https://onlychat-market.pages.dev/packages `
+  --base-url https://market.onlychat.rbowo.com/packages `
   --out ..\.tmp\onlychat-market\public\index.json `
   --key m94ftwIyfp5vu6ZkASUzE2EvfCQ373hDl9PdSKTj82k= `
   --name "OnlyChat Official Market" `
@@ -99,7 +100,7 @@ files.
       "version": "0.1.0",
       "api": 1,
       "minAppVersion": null,
-      "downloadUrl": "https://onlychat-market.pages.dev/packages/hello-0.1.0.ocp",
+      "downloadUrl": "https://market.onlychat.rbowo.com/packages/hello-0.1.0.ocp",
       "sha256": "<hex sha256 of the complete .ocp>",
       "signature": "<base64 ed25519 signature>",
       "keyId": "6ca4f6d452839f91",
