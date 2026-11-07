@@ -1,8 +1,28 @@
 {
   "schemaVersion": 1,
   "name": "OnlyChat Official Market",
-  "updatedAt": "2026-11-07T04:04:13Z",
+  "updatedAt": "2026-11-07T05:21:15Z",
   "plugins": [
+    {
+      "id": "ai-chat",
+      "version": "0.1.0",
+      "api": 1,
+      "minAppVersion": null,
+      "downloadUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.1.0.ocp",
+      "sha256": "a9777079d00fa21ce32f869020a085293d44132ff2fe79752439c25e6930ca32",
+      "signature": "XAZMvQI2yPtlUpuD48N6AWpq89ZjEwFlkLmliBGOuqSrFuKAd/Z//m7G3IIDUgUALcrjVwlwg7lVhRLu9lFuBw==",
+      "keyId": "6ca4f6d452839f91",
+      "publisher": "onlychat",
+      "permissions": [
+        "chat.receive",
+        "chat.send",
+        "net"
+      ],
+      "displayName": "AI 聊天助手",
+      "description": "接入 OpenAI / Anthropic / Gemini 的聊天机器人，带按服务器隔离的本地记忆（长期画像、对话摘要与关键词检索）。",
+      "homepage": null,
+      "iconUrl": null
+    },
     {
       "id": "hello",
       "version": "0.1.0",
