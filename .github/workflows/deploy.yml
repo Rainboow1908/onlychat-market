@@ -31,7 +31,22 @@ jobs:
           ONLYCHAT_MARKET_PUBLIC_KEY: ${{ vars.ONLYCHAT_MARKET_PUBLIC_KEY }}
         run: node .github/scripts/verify-signatures.mjs
 
+      - name: Check Cloudflare credentials
+        id: cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -n "${CLOUDFLARE_API_TOKEN}" ] && [ -n "${CLOUDFLARE_ACCOUNT_ID}" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning title=Cloudflare secrets missing::CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID is not configured; skipping the Pages deployment."
+            echo "Deployment skipped: Cloudflare secrets are not configured." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Deploy to Cloudflare Pages
+        if: steps.cloudflare.outputs.ready == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

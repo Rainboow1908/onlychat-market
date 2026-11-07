@@ -15,7 +15,7 @@ The daemon trusts this key by default. `ONLYCHAT_MARKET_KEYS` and
 
 ```text
 public/
-  index.json                     signed release index (schemaVersion 1)
+  index.json                     release index (schemaVersion 1; not signed)
   packages/
     <id>-<version>.ocp           deterministic ZIP package
     <id>-<version>.ocp.sig       detached Ed25519 signature (JSON)
@@ -32,42 +32,59 @@ manifest, permissions) before installing.
 ## Publishing a release
 
 All package work uses the Rust CLI from the OnlyChat Next workspace; the CI
-script only verifies signatures and can sign a package that has no `.sig`
-yet.
+script only verifies signatures and can sign a package that has no `.sig` yet.
+Run the packaging steps from `Onlychat/onlychat-next`:
 
 ```powershell
-# 1. Build the CLI
+# 1. Build the wasm plugins and the CLI
+powershell -ExecutionPolicy Bypass -File scripts\build-plugins.ps1
 cargo build -p onlychat-plugin-market --bin onlychat-market
 
-# 2. Pack + sign into public/packages
-onlychat-market pack ..\..\Onlychat\plugins\hello `
-  --key ..\..\Onlychat\.tmp\onlychat-market-secrets\official-seed.txt `
-  --out public\packages\hello-0.1.0.ocp
+# 2. Stage only the distributable files. Never pack Cargo.toml/src/:
+#    the layout whitelist rejects them, and plugin.json is forbidden.
+$stage = "..\.tmp\market-stage\hello"
+New-Item -ItemType Directory -Force $stage | Out-Null
+Copy-Item plugins\hello\plugin.toml,plugins\hello\plugin.wasm $stage\
 
-# 3. Regenerate the index (verifies every package with the official key)
-onlychat-market index public\packages `
+# 3. Pack + sign into public/packages (writes hello-0.1.0.ocp and .ocp.sig)
+cargo run -p onlychat-plugin-market --bin onlychat-market -- pack $stage `
+  --key ..\.tmp\onlychat-market-secrets\official-seed.txt `
+  --out ..\.tmp\onlychat-market\public\packages\hello-0.1.0.ocp
+
+# 4. Verify one package independently
+cargo run -p onlychat-plugin-market --bin onlychat-market -- verify `
+  ..\.tmp\onlychat-market\public\packages\hello-0.1.0.ocp `
+  --key m94ftwIyfp5vu6ZkASUzE2EvfCQ373hDl9PdSKTj82k=
+
+# 5. Regenerate the index (verifies every package with the official key)
+cargo run -p onlychat-plugin-market --bin onlychat-market -- index `
+  ..\.tmp\onlychat-market\public\packages `
   --base-url https://onlychat-market.pages.dev/packages `
-  --out public\index.json `
+  --out ..\.tmp\onlychat-market\public\index.json `
   --key m94ftwIyfp5vu6ZkASUzE2EvfCQ373hDl9PdSKTj82k= `
   --name "OnlyChat Official Market" `
   --publisher onlychat
+```
 
-# 4. Verify one package independently
-onlychat-market verify public\packages\hello-0.1.0.ocp `
-  --key m94ftwIyfp5vu6ZkASUzE2EvfCQ373hDl9PdSKTj82k=
+Then commit from this repository. Pushing to `main` runs the workflow, which
+verifies every signature and deploys to Cloudflare Pages:
 
-# 5. Deploy
-npx wrangler pages deploy public --project-name onlychat-market
-
-# 6. Commit + push
+```powershell
+cd ..\.tmp\onlychat-market
 git add public
 git commit -m "release: hello 0.1.0"
 git push origin main
 ```
 
+`onlychat-market sign <file.ocp> --key <seed>` signs a package that was built
+elsewhere. `onlychat-market keygen --seed-out <file> --public-out <file>` creates
+a new publisher pair.
+
 Pack the directory that contains only `plugin.toml` and the wasm entry (plus
-optional `ui/` and `assets/`). Do not pack a source tree: `Cargo.toml`,
-`src/`, `examples/` and other files are rejected by the layout whitelist.
+optional `ui/` and `assets/`). `plugin.json`, `logs/`, `resources/`,
+`plugin-data/`, `Cargo.toml` and `src/` are always rejected; only
+`README(.md)`, `LICENSE(.md)` and `CHANGELOG.md` are accepted as extra root
+files.
 
 ## Index format
 
@@ -107,10 +124,21 @@ consent required). `minAppVersion` is enforced before a package is downloaded.
   `Onlychat/.tmp/onlychat-market-secrets/official-seed.txt` on the publisher
   machine and is **never committed**. `.gitignore` excludes `*.seed`,
   `secrets/` and the `.wrangler` cache.
-* GitHub Actions reads the seed only from the `ONLYCHAT_MARKET_SEED` secret.
-  The workflow never echoes it.
-* `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are the only other
-  secrets required for deployment.
+* GitHub Actions reads the seed only from the `ONLYCHAT_MARKET_SEED` secret
+  (base64 encoded 32-byte Ed25519 seed). The workflow never echoes it.
+* Required repository secrets:
+
+  | Secret | Purpose |
+  |---|---|
+  | `ONLYCHAT_MARKET_SEED` | Signs packages that have no `.sig`; must match the public key |
+  | `CLOUDFLARE_API_TOKEN` | Cloudflare Pages deployment |
+  | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account |
+
+  Optional repository variable `ONLYCHAT_MARKET_PUBLIC_KEY` (64 hex chars)
+  overrides the committed public key for verification/re-signing.
+* If `CLOUDFLARE_API_TOKEN` or `CLOUDFLARE_ACCOUNT_ID` is missing, the workflow
+  skips deployment with a warning annotation instead of failing; signature
+  verification still runs and can fail the job.
 * Rotating the key means publishing a new public key in a daemon release and
   re-signing every package with the new key. Old signatures stay valid only
   while the old key remains trusted.
