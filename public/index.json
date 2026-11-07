@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "OnlyChat Official Market",
-  "updatedAt": "2026-11-07T13:08:02Z",
+  "updatedAt": "2026-11-07T13:20:43Z",
   "plugins": [
     {
       "id": "ai-chat",
@@ -9,8 +9,8 @@
       "api": 1,
       "minAppVersion": null,
       "downloadUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.3.0.ocp",
-      "sha256": "60d640538a8e6221437be94eb625c77d4d353563103ad9ca182668921938a5ce",
-      "signature": "57RLTeWYsk5p03LzaHujw0vQI7KUsPvB4kVy7LmnNgT7jDrvaywDS6/tOVaEcI92RCfNWcuweVdP3ixEPZ1aDA==",
+      "sha256": "8d069f1ff6ae7714dcad115ce267482dbbee2680e0325abf478e311b2d89999d",
+      "signature": "y2FLfx1uJhpjGZSLM9lJe3lDF/vjGtBuPHueSGAn365P3wn0bBPi2aEK7CKFbo6KvgOx8TyL/zsg7M3P555wAw==",
       "keyId": "6ca4f6d452839f91",
       "publisher": "onlychat",
       "permissions": [

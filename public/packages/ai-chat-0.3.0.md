@@ -281,6 +281,7 @@ iframe。页面使用 DOM API 和 `textContent` 构建，不把模型/工具输�
 - 每次回复、`auto` 决策、工具调用、记忆抽取和上下文压缩都会消耗模型 tokens；`auto` 模式每条消息都会请求模型，成本最高。
 - `maxToolSteps=0` 表示不限次数，模型可能连续调用很多工具；需要控制成本时设置一个上限。
 - 归档、记忆、设置和 API Key 只保存在本机插件目录；卸载时如需彻底删除，必须在市场卸载流程中确认删除数据。
+- 右侧页面运行在 `sandbox="allow-scripts"` 的 iframe 中，不能读宿主 DOM、storage 或 token；所有按钮/输入只通过 `plugin:action` 回到插件，再走宿主权限检查。
 - 模型输出被限制为聊天文本，插件不提供执行命令、移动、攻击、破坏方块或读取世界的权限。
 
 ## 已知限制
@@ -319,4 +320,11 @@ src/llm.rs       OpenAI / Anthropic / Gemini 请求、reasoning_effort
 src/html.rs      Bing / DuckDuckGo 解析、重定向解码、URL 安全
 src/prompt.rs    系统提示、记忆/摘要注入、工具协议、压缩提示、不可信数据包裹
 src/settings.rs  设置解析与脱敏摘要
+ui/agent.html    右侧对话窗口结构（沙箱入口）
+ui/agent.css     扁平对话布局、深浅主题变量
+ui/agent.js      host:init/host:update 渲染、回合折叠、滚动与 plugin:action
 ```
+
+宿主给 `/plugin-sandbox/<id>/` 下发的 CSP 是 `default-src 'self' data: blob:`，不允许内联
+脚本/样式，因此页面用同目录的 `agent.css` / `agent.js`；所有内容仍由 DOM API 和
+`textContent` 构建。
