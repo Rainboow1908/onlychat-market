@@ -1,86 +1,8 @@
 {
   "schemaVersion": 1,
   "name": "OnlyChat Official Market",
-  "updatedAt": "2026-11-07T13:31:55Z",
+  "updatedAt": "2026-11-07T14:45:42Z",
   "plugins": [
-    {
-      "id": "ai-chat",
-      "version": "0.3.0",
-      "api": 1,
-      "minAppVersion": null,
-      "downloadUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.3.0.ocp",
-      "sha256": "9cb0085a29073f986eb5baf3eb90497997b45dd7bf08e0bd8691ca48056ad1c3",
-      "signature": "g+HJg1sbAFFQ3akhu+Ah254f/icY9TDXY1KjjpaIImNNfmPMgsUKXI7S0AVc21Eu43f4J4Dj4Eg5vQDIr6PJBg==",
-      "keyId": "6ca4f6d452839f91",
-      "publisher": "onlychat",
-      "permissions": [
-        "chat.receive",
-        "chat.send",
-        "net",
-        "ui.declarative",
-        "ui.sandbox"
-      ],
-      "displayName": "AI 聊天助手",
-      "description": "接入 OpenAI / Anthropic / Gemini 的聊天 agent：JSON 工具调用、全量归档 grep、上下文压缩和沙箱思考时间线。",
-      "homepage": null,
-      "readmeUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.3.0.md",
-      "iconUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.3.0.svg",
-      "creator": {
-        "name": "Rainboow1908",
-        "url": "https://github.com/Rainboow1908"
-      }
-    },
-    {
-      "id": "ai-chat",
-      "version": "0.2.0",
-      "api": 1,
-      "minAppVersion": null,
-      "downloadUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.2.0.ocp",
-      "sha256": "189d4b7414eb57550cb04ef2f35bd28e364ec48048c2f21ac12131573fd7be46",
-      "signature": "hiLENXplCi7MtoaxMayRHx+97QMtsH0NalAukQuSX41pZeCEP+OoW5r1yKtBBZmO4q5tX9Lo4nr9QXU+rsJKDg==",
-      "keyId": "6ca4f6d452839f91",
-      "publisher": "onlychat",
-      "permissions": [
-        "chat.receive",
-        "chat.send",
-        "net",
-        "ui.declarative"
-      ],
-      "displayName": "AI 聊天助手",
-      "description": "接入 OpenAI / Anthropic / Gemini 的聊天 agent：JSON 工具调用、全量归档 grep、上下文压缩和右侧思考面板。",
-      "homepage": null,
-      "readmeUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.2.0.md",
-      "iconUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.2.0.svg",
-      "creator": {
-        "name": "Rainboow1908",
-        "url": "https://github.com/Rainboow1908"
-      }
-    },
-    {
-      "id": "ai-chat",
-      "version": "0.1.0",
-      "api": 1,
-      "minAppVersion": null,
-      "downloadUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.1.0.ocp",
-      "sha256": "7f192ce4f58414fce1a0452fc56cd86eec4cc2a70bdef7a50aa2acac693cf87e",
-      "signature": "yDUHKbiItu9KP5W2ugqHBtqTFlpFD7E6+QlNCqggj/Pn3jpMpn5glHSR63sBu+dymSPr3pUzY7sWgWt+Yl7YCg==",
-      "keyId": "6ca4f6d452839f91",
-      "publisher": "onlychat",
-      "permissions": [
-        "chat.receive",
-        "chat.send",
-        "net"
-      ],
-      "displayName": "AI 聊天助手",
-      "description": "接入 OpenAI / Anthropic / Gemini 的聊天机器人，带按服务器隔离的本地记忆（长期画像、对话摘要与关键词检索）。",
-      "homepage": null,
-      "readmeUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.1.0.md",
-      "iconUrl": "https://market.onlychat.rbowo.com/packages/ai-chat-0.1.0.svg",
-      "creator": {
-        "name": "Rainboow1908",
-        "url": "https://github.com/Rainboow1908"
-      }
-    },
     {
       "id": "hello",
       "version": "0.1.0",

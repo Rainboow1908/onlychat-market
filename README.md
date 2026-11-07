@@ -12,6 +12,24 @@ Official static plugin market for OnlyChat Next.
 The daemon trusts this key by default. `ONLYCHAT_MARKET_KEYS` and
 `ONLYCHAT_MARKET_INDEX` can override the trust store/index for local testing.
 
+## Current plugins
+
+`index.json` currently publishes 4 packages:
+
+| Id | Version | Display name |
+| --- | --- | --- |
+| `minimap` | 0.5.1 | 小地图 |
+| `minimap` | 0.5.0 | 小地图 |
+| `official-chat` | 1.1.0 | 永久聊天记录 |
+| `hello` | 0.1.0 | Hello (ABI reference plugin) |
+
+`ai-chat` is no longer published in the official market: all of its packages
+(0.1.0, 0.2.0, 0.3.0) were withdrawn from `public/packages` and from
+`index.json`, and the old download URLs now return 404. The plugin source is
+kept in the OnlyChat repository (`onlychat-next/plugins/ai-chat`) and is not
+distributed through this market. Already installed copies keep working; the
+daemon never uninstalls a plugin because an index entry disappeared.
+
 ## Layout
 
 ```text
@@ -87,6 +105,17 @@ git push origin main
 `onlychat-market sign <file.ocp> --key <seed>` signs a package that was built
 elsewhere. `onlychat-market keygen --seed-out <file> --public-out <file>` creates
 a new publisher pair.
+
+### Withdrawing a release
+
+Move the package and its sidecars (`<id>-<version>.ocp`, `.ocp.sig`, `.md`,
+`.svg|png|webp`) out of `public/packages` into `removed/<id>/` **inside this
+repository working tree** (never delete them: they are the rollback copy;
+`removed/` is git-ignored), regenerate `public/index.json` with the same
+`onlychat-market index` command, and deploy. The withdrawal is committed like
+any other release, so the old URLs stop resolving while `git log` still has the
+signed artifacts. Removing an index entry does not uninstall the plugin on any
+client.
 
 Pack the directory that contains only `plugin.toml` and the wasm entry (plus
 optional `ui/` and `assets/`). `plugin.json`, `logs/`, `resources/`,

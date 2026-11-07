@@ -16,3 +16,6 @@ secrets/
 private/
 .env
 .env.*
+
+# Withdrawn packages kept as a local rollback copy (never deployed)
+removed/
