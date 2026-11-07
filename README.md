@@ -14,12 +14,14 @@ The daemon trusts this key by default. `ONLYCHAT_MARKET_KEYS` and
 
 ## Current plugins
 
-`index.json` currently publishes 4 packages:
+`index.json` currently publishes 6 packages:
 
 | Id | Version | Display name |
 | --- | --- | --- |
+| `minimap` | 0.5.2 | 小地图 |
 | `minimap` | 0.5.1 | 小地图 |
 | `minimap` | 0.5.0 | 小地图 |
+| `official-chat` | 1.1.1 | 永久聊天记录 |
 | `official-chat` | 1.1.0 | 永久聊天记录 |
 | `hello` | 0.1.0 | Hello (ABI reference plugin) |
 
