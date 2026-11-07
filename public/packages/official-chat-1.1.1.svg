@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" role="img" aria-label="Official chat log">
+  <path d="M16 8h24l10 10v30a6 6 0 0 1-6 6H16a6 6 0 0 1-6-6V14a6 6 0 0 1 6-6Z" fill="#5B8DEF"/>
+  <path d="M40 8v10h10L40 8Z" fill="#BCD0FF"/>
+  <path d="M21 29h20" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M21 38h20" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M21 47h12" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+</svg>

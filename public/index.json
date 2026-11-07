@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "OnlyChat Official Market",
-  "updatedAt": "2026-11-07T14:45:42Z",
+  "updatedAt": "2026-11-07T15:39:29Z",
   "plugins": [
     {
       "id": "hello",
@@ -19,6 +19,33 @@
       "homepage": null,
       "readmeUrl": "https://market.onlychat.rbowo.com/packages/hello-0.1.0.md",
       "iconUrl": "https://market.onlychat.rbowo.com/packages/hello-0.1.0.svg",
+      "creator": {
+        "name": "Rainboow1908",
+        "url": "https://github.com/Rainboow1908"
+      }
+    },
+    {
+      "id": "minimap",
+      "version": "0.5.2",
+      "api": 1,
+      "minAppVersion": null,
+      "downloadUrl": "https://market.onlychat.rbowo.com/packages/minimap-0.5.2.ocp",
+      "sha256": "8ec505e2f8f7722bf589105c58be6a634e9739193bf59e49d6c777cf8e91f144",
+      "signature": "+zKO9nG4yTUJItx2JeLgEe0Ec6RjtZiNNnQfnUvuD6TOoIOrXQ7VV6zaRZ0yzYCJ540iN37Piu4KmG8JNosUCA==",
+      "keyId": "6ca4f6d452839f91",
+      "publisher": "onlychat",
+      "permissions": [
+        "assets",
+        "entities.read",
+        "players.read",
+        "ui.declarative",
+        "world.read"
+      ],
+      "displayName": "小地图",
+      "description": "在游戏界面角落显示当前层地形、附近玩家和生物，支持缩放、旋转与右键传送。",
+      "homepage": null,
+      "readmeUrl": "https://market.onlychat.rbowo.com/packages/minimap-0.5.2.md",
+      "iconUrl": "https://market.onlychat.rbowo.com/packages/minimap-0.5.2.svg",
       "creator": {
         "name": "Rainboow1908",
         "url": "https://github.com/Rainboow1908"
@@ -73,6 +100,30 @@
       "homepage": null,
       "readmeUrl": "https://market.onlychat.rbowo.com/packages/minimap-0.5.0.md",
       "iconUrl": "https://market.onlychat.rbowo.com/packages/minimap-0.5.0.svg",
+      "creator": {
+        "name": "Rainboow1908",
+        "url": "https://github.com/Rainboow1908"
+      }
+    },
+    {
+      "id": "official-chat",
+      "version": "1.1.1",
+      "api": 1,
+      "minAppVersion": null,
+      "downloadUrl": "https://market.onlychat.rbowo.com/packages/official-chat-1.1.1.ocp",
+      "sha256": "63ca797613c0adbdd723b6086a6d9ed3a2e9b8d471d2cf08ca1e8969f6b485a4",
+      "signature": "6y5iyBwEiDfJHM3ebC63jQ0cHoRs7FnjQjYgAqVZphGxQjVp13kfKGQ2Hq8P1NkFOceqxaH9EwsMSyEeGWPQAg==",
+      "keyId": "6ca4f6d452839f91",
+      "publisher": "onlychat",
+      "permissions": [
+        "chat.receive",
+        "fs.plugin"
+      ],
+      "displayName": "永久聊天记录",
+      "description": "按服务器保存聊天记录，重连或重启后仍能翻看之前的历史。",
+      "homepage": null,
+      "readmeUrl": "https://market.onlychat.rbowo.com/packages/official-chat-1.1.1.md",
+      "iconUrl": "https://market.onlychat.rbowo.com/packages/official-chat-1.1.1.svg",
       "creator": {
         "name": "Rainboow1908",
         "url": "https://github.com/Rainboow1908"
